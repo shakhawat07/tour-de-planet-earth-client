@@ -8,14 +8,14 @@ const Home = () => {
     const [tourPackages, setTourPackages] = useState([]);
     const [teamMembers, setTeamMembers] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/tourPackages`)
+        fetch(`https://grisly-grave-71676.herokuapp.com/tourPackages`)
             .then(res => res.json())
             .then(data => setTourPackages(data));
     }, []);
     // console.log(tourPackages);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/teamMembers`)
+        fetch(`https://grisly-grave-71676.herokuapp.com/teamMembers`)
             .then(res => res.json())
             .then(data => setTeamMembers(data));
     }, []);
@@ -28,7 +28,7 @@ const Home = () => {
             {/* our tour packages  */}
             <section className="tourPackagesHome-container">
                 {
-                    tourPackages.map(tourPackage => <TourPackagesHome
+                    tourPackages.slice(0, 6).map(tourPackage => <TourPackagesHome
                         key={tourPackage._id}
                         tourPackage={tourPackage}
                     ></TourPackagesHome>

@@ -5,7 +5,7 @@ import './TourCategories.css';
 const TourCategories = () => {
     const [tourCategories, setTourCategories] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/tourCategories')
+        fetch('https://grisly-grave-71676.herokuapp.com/tourCategories')
             .then(res => res.json())
             .then(data => setTourCategories(data));
     }, []);

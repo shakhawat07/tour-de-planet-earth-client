@@ -8,7 +8,7 @@ import axios from 'axios';
 const TourPackageDetails = () => {
     const [tourPackages, setTourPackages] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/tourPackages`)
+        fetch(`https://grisly-grave-71676.herokuapp.com/tourPackages`)
             .then(res => res.json())
             .then(data => setTourPackages(data));
     }, []);
@@ -22,7 +22,7 @@ const TourPackageDetails = () => {
     const onSubmit = data => {
         console.log(data);
 
-        axios.post('http://localhost:5000/orders', data)
+        axios.post('https://grisly-grave-71676.herokuapp.com/orders', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Order processed Successfully');
@@ -47,7 +47,7 @@ const TourPackageDetails = () => {
                             </div>
                             <div className="col-lg-6 col-md-12 col-sm-12 col-12 d-flex flex-column justify-content-center align-items-center">
                                 <form className="shipping-form" onSubmit={handleSubmit(onSubmit)}>
-                                    <h3>Booking</h3>
+                                    <h3 className="text-center text-primary">Place Order</h3>
 
                                     <input type="hidden" placeholder="Key" defaultValue={filtered._id} {...register("key")} />
 
@@ -65,7 +65,7 @@ const TourPackageDetails = () => {
 
                                     <input type="hidden" placeholder="Status" defaultValue="Pending" {...register("status")} />
 
-                                    <input type="submit" />
+                                    <input type="submit" value="Place Order" />
                                 </form>
                             </div>
                         </div>

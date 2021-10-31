@@ -36,7 +36,7 @@ const Login = () => {
                     {/* password  */}
                     <div className="row mb-3">
                         <label htmlFor="inputPassword3" className="text-black fw-bold mx-3 col-sm-2 col-form-label mt-3">Password:</label>
-                        <input type="password" onBlur={handlePasswordChange} className="form-control" id="inputPassword3" placeholder="Enter Password" name="password" autoComplete="on" required />
+                        <input type="email" onBlur={handlePasswordChange} className="form-control" id="inputPassword3" placeholder="Enter Password" name="password" autoComplete="on" required />
                     </div>
                     {/* phone  */}
                     {isLogin && <div className="row mb-3">

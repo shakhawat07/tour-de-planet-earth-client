@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
 
 const ManageAllOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/orders`)
+        fetch(`https://grisly-grave-71676.herokuapp.com/orders`)
             .then(res => res.json())
             .then(data => setMyOrders(data));
     }, []);
@@ -12,7 +13,7 @@ const ManageAllOrders = () => {
     const handleDeleteUser = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://grisly-grave-71676.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -31,7 +32,7 @@ const ManageAllOrders = () => {
     const handleOrderStatus = id => {
         const proceed = window.confirm('Are you sure, you want to approve the order?');
         if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://grisly-grave-71676.herokuapp.com/orders/${id}`;
 
             fetch(url, {
                 method: 'PUT',
@@ -51,23 +52,48 @@ const ManageAllOrders = () => {
     }
     return (
         <div>
-            <h1 className="text-primary mt-4 text-center">Manage All Orders</h1>
+            <h1 className="text-primary my-4 text-center">Manage All Orders</h1>
             {
                 myOrders.map(filtered =>
                     < div className="container-fluid" key={filtered._id}>
-                        <div className="row m-2 tourPackageDetails-container">
-                            <div className="col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-row justify-content-center align-items-center">
-                                <p className="fw-5 my-3 text-primary me-5">{filtered._id}</p>
-                                {/* <img className="img-fluid border border-secondary rounded p-4" style={{ width: '400px', height: '280px' }} src={filtered.img} alt="" /> */}
-                                <p className="w-50 mb-1 mt-2">{filtered.email}</p>
-                                <p className="w-50 my-1">{filtered.tourPackage}</p>
-                                <p className="w-50 my-1">{filtered.status}</p>
-
-                                <button className="btn btn-danger me-5" onClick={() => handleDeleteUser(filtered._id)}>Delete</button>
-
-                                <button className="btn btn-danger" onClick={() => handleOrderStatus(filtered._id)}>Approved</button>
-                            </div>
-                        </div>
+                        <Table striped bordered hover variant="dark" responsive>
+                            <thead>
+                                <tr>
+                                    <th>Order Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Tour Package Name</th>
+                                    <th>Status</th>
+                                    <th>Delete</th>
+                                    <th>Status Approve</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p className="mb-1 mt-2">{filtered._id}</p>
+                                    </td>
+                                    <td>
+                                        <p className="mb-1 mt-2">{filtered.name}</p>
+                                    </td>
+                                    <td>
+                                        <p className="mb-1 mt-2">{filtered.email}</p>
+                                    </td>
+                                    <td>
+                                        <p className="mb-1 mt-2">{filtered.tourPackage}</p>
+                                    </td>
+                                    <td>
+                                        <p className="mb-1 mt-2">{filtered.status}</p>
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-danger my-1" onClick={() => handleDeleteUser(filtered._id)}>Delete</button>
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-danger my-1" onClick={() => handleOrderStatus(filtered._id)}>Approved</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </Table>
                     </div>
                 )
             }
