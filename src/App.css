@@ -3,6 +3,7 @@
 .App {
   font-family: 'Merriweather', serif;
   text-align: center;
+  overflow: hidden;
 }
 
 .App-logo {
