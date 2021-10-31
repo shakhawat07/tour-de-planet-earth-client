@@ -1,0 +1,11 @@
+.nav{
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-right: 2rem;
+
+}
+.nav:hover{
+    color: tomato;
+    transform: scale(1.15);
+}

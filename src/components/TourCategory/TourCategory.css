@@ -1,0 +1,6 @@
+.tourCategory-card-background{
+    background-color: #f5f5f5d1;
+}
+.tourCategory-img img:hover{
+    transform: scale(1.07);
+}

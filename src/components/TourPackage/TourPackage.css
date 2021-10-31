@@ -1,0 +1,6 @@
+.tourPackage-card-background{
+    background-color: #ffffffd1;
+}
+.tourPackage-img img:hover{
+    transform: scale(1.07);
+}
